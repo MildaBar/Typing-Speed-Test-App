@@ -18,6 +18,10 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
+
+    <!-- CSS style links-->
+    <link rel="stylesheet" href="./style/header.css" />
+    <link rel="stylesheet" href="./style/metrics.css" />
   </head>
   <body>
     <!-- HEADER -->
@@ -25,10 +29,11 @@
       <a class="navbar-brand" href="#">
         <img
           src="./images/icons/typing.png"
-          width="30"
-          height="30"
+          width="60"
+          height="60"
           class="d-inline-block align-top"
-          alt=""
+          id="header-icon"
+          alt="header-icon"
         />
         Typing Speed Test App
       </a>
@@ -36,7 +41,15 @@
     </nav>
 
     <!-- METRICS CONTAINER -->
-    <div id="metrics-container"></div>
+    <div id="metrics-container">
+      <div id="timer">60</div>
+      <div id="typing-speed">0</div>
+      <div id="word-accuracy">0</div>
+      <div id="improvement">
+        <h2>Improvement</h2>
+        <div id="improvement-results"></div>
+      </div>
+    </div>
 
     <!-- TYPING TEST CONTAINER -->
     <div id="typing-container"></div>

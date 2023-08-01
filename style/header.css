@@ -1,0 +1,21 @@
+.navbar {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: rgb(255, 255, 255);
+}
+
+.navbar a {
+  display: flex;
+  align-items: center;
+}
+
+.navbar button {
+  border-radius: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
