@@ -41,21 +41,37 @@
     </nav>
 
     <!-- METRICS CONTAINER -->
-    <div id="metrics-container">
-      <div id="timer">60</div>
-      <div id="typing-speed">0</div>
-      <div id="word-accuracy">0</div>
+    <section id="metrics-container">
+      <!-- timer -->
+      <div class="metrics">
+        <div id="timer">60</div>
+        <div class="metrics-title">seconds</div>
+      </div>
+      <!-- typing speed -->
+      <div class="metrics">
+        <div id="typing-speed">0</div>
+        <div class="metrics-title">WPM</div>
+      </div>
+      <!-- word accuracy -->
+      <div class="metrics">
+        <div id="word-accuracy">0</div>
+        <div class="metrics-title">% accuracy</div>
+      </div>
+      <!-- improvement section -->
       <div id="improvement">
-        <h2>Improvement</h2>
+        <h4>improvement</h4>
         <div id="improvement-results"></div>
       </div>
-    </div>
+    </section>
 
     <!-- TYPING TEST CONTAINER -->
-    <div id="typing-container"></div>
+    <section id="typing-container">
+      <div id="typing-space"></div>
+    </section>
 
     <!-- PROGRESS CONTAINER -->
-    <div id="progress-container"></div>
+    <section id="progress-container"></section>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

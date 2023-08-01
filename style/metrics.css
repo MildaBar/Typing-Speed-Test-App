@@ -1,0 +1,39 @@
+#metrics-container {
+  font-family: monospace;
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  padding: 20px;
+  margin: 10px;
+}
+
+/* METRICS - seconds, wpm, accuracy */
+.metrics {
+  border-radius: 20px;
+  border: 5px solid #007bff;
+  padding: 20px 40px;
+  font-size: 40px;
+  background-color: white;
+  text-align: center;
+}
+
+.metrics-title {
+  font-size: 20px;
+}
+
+/* IMPROVEMENT SECTION */
+#improvement-results {
+  border-radius: 20px;
+  border: 5px solid #007bff;
+  padding: 50px 70px;
+  font-size: 20px;
+  background-color: white;
+}
+
+#improvement h4 {
+  font-size: 20px;
+}
+
+#improvement {
+  text-align: center;
+}
