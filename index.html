@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="./style/header.css" />
     <link rel="stylesheet" href="./style/metrics.css" />
     <link rel="stylesheet" href="./style/typing.css" />
+    <link rel="stylesheet" href="./style/progress.css" />
   </head>
   <body>
     <!-- HEADER -->
@@ -71,12 +72,40 @@
     </section>
 
     <!-- PROGRESS CONTAINER -->
-    <section id="progress-container"></section>
+    <section id="progress-container">
+      <div id="progress-title">
+        <div>SHOW PREVIOUS RESULTS</div>
+        <img
+          src="./images/icons/show-more.png"
+          width="50"
+          height="50"
+          id="show-more-icon"
+          alt="show-more-icon"
+        />
+      </div>
+      <div id="progress-table-container">
+        <div id="progress-table-wrapper">
+          <table id="progress-table">
+            <tr>
+              <th>TIME</th>
+              <th>WPM</th>
+              <th>ACCURACY</th>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="./JS/script.js"></script>
   </body>
 </html>
