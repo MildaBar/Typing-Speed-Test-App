@@ -29,3 +29,11 @@
   border: none;
   cursor: pointer;
 }
+
+#reset-btn:hover {
+  background-color: red;
+}
+
+#start-btn:hover {
+  background-color: green;
+}

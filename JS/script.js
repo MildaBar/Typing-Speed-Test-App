@@ -1,9 +1,5 @@
-import { initializeData } from "./typing.js";
+import { typingTest, inputField, displayText } from "./typing.js";
 
-import { showProgress } from "./progress.js";
-
-// Call the fetchData function to fetch the text and set up the typing test app
-initializeData();
-
-// initialize show progress results function
-showProgress();
+// DISPLAY TEXT ON THE SCREEN AND INITIALIZE TYPING TEST FUNCTION
+displayText();
+inputField.addEventListener("input", typingTest);
