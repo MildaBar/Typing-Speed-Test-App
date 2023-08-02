@@ -1,3 +1,5 @@
+import { startTimer } from "./metrics.js";
+
 export let typingText = document.querySelector(".typing-text p");
 export const inputField = document.getElementById("input-field");
 
@@ -41,6 +43,15 @@ export async function displayText() {
 }
 
 // TYPING TEST
+
+// ------------------------------------------
+// Trigger the typing test and start the timer when the user starts typing
+export function startTypingTest() {
+  startTimer(charIndex); // Start the timer
+  typingTest(); // Start the typing test
+}
+// -----------------------------------------------
+
 // Keep track of the current index of the char being typed
 let charIndex = 0;
 
