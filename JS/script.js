@@ -1,13 +1,9 @@
-// SHOW PROGRESS RESULTS
-document.addEventListener("DOMContentLoaded", () => {
-  const showMoreIcon = document.getElementById("show-more-icon");
-  const progressTable = document.getElementById("progress-table-container");
+import { initializeData } from "./typing.js";
 
-  showMoreIcon.addEventListener("click", () => {
-    if (progressTable.style.display === "none") {
-      progressTable.style.display = "block";
-    } else {
-      progressTable.style.display = "none";
-    }
-  });
-});
+import { showProgress } from "./progress.js";
+
+// Call the fetchData function to fetch the text and set up the typing test app
+initializeData();
+
+// initialize show progress results function
+showProgress();
