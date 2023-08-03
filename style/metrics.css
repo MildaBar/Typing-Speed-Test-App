@@ -37,3 +37,13 @@
 #improvement {
   text-align: center;
 }
+
+/* WHEN THE TEST IS DONE CHANGE BORDER COLOR */
+.metrics.done {
+  border-radius: 20px;
+  border: 10px solid green;
+  padding: 20px 40px;
+  font-size: 40px;
+  background-color: white;
+  text-align: center;
+}

@@ -4,14 +4,22 @@ export let typingText = document.querySelector(".typing-text p");
 export const inputField = document.getElementById("input-field");
 
 // FETCH DATA
-export async function fetchData() {
+export async function fetchData(paragraphLength) {
   try {
     const response = await fetch(
-      "https://poetrydb.org/title/Ozymandias/lines.json"
+      "https://poetrydb.org/title/Alastor: Or, the Spirit of Solitude/lines.json"
     );
     const data = await response.json();
     const lines = data[0].lines;
-    const text = lines.join(" ");
+
+    // get random start index
+    const startIndex = Math.floor(
+      Math.random() * (lines.length - paragraphLength + 1)
+    );
+    // get paragraph
+    const paragraph = lines.slice(startIndex, startIndex + paragraphLength);
+
+    const text = paragraph.join(" ");
     return text;
   } catch (error) {
     console.log("Error fetching data:", error);
@@ -22,7 +30,8 @@ export async function fetchData() {
 // DISPLAY TEXT ON THE SCREEN
 export async function displayText() {
   try {
-    let text = await fetchData();
+    let paragraphLength = 20;
+    let text = await fetchData(paragraphLength);
     typingText.innerHTML = "";
     typingText.style.whiteSpace = "";
 
