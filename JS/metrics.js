@@ -1,5 +1,7 @@
+import { charIndex } from "./typing.js";
+
 // TIMER
-export function startTimer(charIndex) {
+export function startTimer() {
   let testTime = 10;
   let timer = document.getElementById("timer");
 
@@ -12,15 +14,14 @@ export function startTimer(charIndex) {
     // if the timer reaches 0, stop the timer
     if (testTime <= 0) {
       clearInterval(timerInterval);
+      // ADD RESULTS, MEASUREMENTS, IMPROVEMENT
       updateTime();
-      countWPM(charIndex);
-      // ADD RESULTS TO IMPROVEMENT SECTION
+      countWPM();
     }
   }, 1000);
 }
 
 // DATE
-// update the table with current date and time
 function updateTime() {
   // progress table
   const timeCell = document.getElementById("time-result");
@@ -33,12 +34,12 @@ function updateTime() {
 }
 
 // WPM = (Number of characters typed ÷ 5) ÷ Time taken (in minutes)
-function countWPM(charIndex) {
+export function countWPM() {
   const results = document.querySelectorAll(".wpm");
   let wpm = charIndex / 5;
-  // Loop through each element with the "wpm" class and set its content
+
+  // loop through each element with the "wpm" class and set its content
   results.forEach((result) => {
-    console.log("Setting WPM value to:", wpm.toFixed(0));
-    result.innerText = wpm.toFixed(0); // Use toFixed(0) to round and convert it to a whole number
+    result.innerText = wpm.toFixed(0); // use toFixed(0) to round and convert it to a whole number
   });
 }

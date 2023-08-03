@@ -1,4 +1,4 @@
-/* WORDS */
+/* TYPING CONTAINER*/
 #typing-container {
   height: 450px;
   border: 2px solid black;
@@ -6,15 +6,9 @@
   margin: 10px;
   border-radius: 20px;
   font-family: monospace;
-  /* center the content horizontally and vertically */
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
 }
 
-/* Your existing CSS styles */
-
-/* Add this style to align the text to the left */
+/* TYPED TEXT */
 .typing-text p {
   text-align: start;
   width: 100%;
@@ -24,7 +18,6 @@
   overflow: hidden;
 }
 
-/* Remove overflow: hidden; */
 #typing-space .typing-text {
   max-height: 256px;
 }
@@ -38,12 +31,14 @@
   color: black;
 }
 
+/* hide input field */
 #typing-container #input-field {
   opacity: 0;
   z-index: -999;
   position: absolute;
 }
 
+/* correct and incorrect char */
 .typing-text p span.correct {
   color: #56964f;
 }
