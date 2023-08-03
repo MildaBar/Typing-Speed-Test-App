@@ -1,6 +1,6 @@
 import { charIndex, inputField, typingTest, typingText } from "./typing.js";
 
-export let testTime = 60;
+export let testTime = 10;
 export let timer = document.getElementById("timer");
 export let timerInterval;
 
@@ -17,7 +17,7 @@ export function startTimer() {
       clearInterval(timerInterval);
       // ADD RESULTS, MEASUREMENTS, IMPROVEMENT
       updateTime();
-      countWPM();
+      countAccuracyAndWPM();
       testDone();
 
       // stop further typing
@@ -35,13 +35,15 @@ function updateTime() {
   const now = new Date();
   const date = now.toLocaleDateString();
   const time = now.toLocaleTimeString();
-  timeCell.textContent = `${date} \n ${time} \n`;
+  const dateResult = `${date} \n ${time} \n`;
+
+  timeCell.textContent = dateResult;
+
+  localStorage.setItem("dateResult", dateResult);
 }
 
 // ----- WPM AND WORD ACCURACY -----
-// (Number of characters typed / 5) / Time taken (in minutes)
-// Word Accuracy (%) = (Number of Correct Words / Total Number of Words) * 100
-export function countWPM() {
+export function countAccuracyAndWPM() {
   const characters = typingText.querySelectorAll("span");
   const wordAccuracyElement = document.querySelectorAll(".accuracy");
   const results = document.querySelectorAll(".wpm");
@@ -68,16 +70,23 @@ export function countWPM() {
   const wordAccuracy = totalWords > 0 ? (correctWords / totalWords) * 100 : 0;
   let wpm = charIndex / 5;
 
+  const accuracyResult = wordAccuracy.toFixed(0);
+  const wpmResult = wpm.toFixed(0);
+
   // loop through each element with the "wpm" class and set its content
   results.forEach((result) => {
-    result.innerText = wpm.toFixed(0);
+    result.innerText = wpmResult;
   });
 
   // loop through each element with the "accuracy" class and set its content
   wordAccuracyElement.forEach((element) => {
-    element.textContent = wordAccuracy.toFixed(0);
+    element.textContent = accuracyResult;
   });
+  localStorage.setItem("wpmResult", wpmResult);
+  localStorage.setItem("accuracyResult", accuracyResult);
 }
+// (Number of characters typed / 5) / Time taken (in minutes)
+// Word Accuracy (%) = (Number of Correct Words / Total Number of Words) * 100
 
 // ----- CHANGE COLORS -----
 function testDone() {

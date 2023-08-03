@@ -29,9 +29,8 @@ function resetTest() {
 
   typingText.innerHTML = "";
   inputField.value = "";
-  startTest();
 
-  inputField.addEventListener("input", typingTest);
+  inputField.removeEventListener("input", typingTest);
 }
 
 // PROGRESS

@@ -30,7 +30,7 @@ export async function fetchData(paragraphLength) {
 // DISPLAY TEXT ON THE SCREEN
 export async function displayText() {
   try {
-    let paragraphLength = 20;
+    let paragraphLength = 10;
     let text = await fetchData(paragraphLength);
     typingText.innerHTML = "";
     typingText.style.whiteSpace = "";
