@@ -3,7 +3,10 @@ import { startTimer } from "./metrics.js";
 export let typingText = document.querySelector(".typing-text p");
 export const inputField = document.getElementById("input-field");
 
-// FETCH DATA
+/*
+  ----- FETCH DATA -----
+  fetchData: The file exports the fetchData function, which fetches a poem's lines from a public API and returns a random paragraph of a specified length for the typing test.
+*/
 export async function fetchData(paragraphLength) {
   try {
     const response = await fetch(
@@ -27,7 +30,10 @@ export async function fetchData(paragraphLength) {
   }
 }
 
-// DISPLAY TEXT ON THE SCREEN
+/*
+  ----- DISPLAY TEXT ON THE SCREEN -----
+  Display Text on the Screen: The file exports the displayText function, which fetches a paragraph of text using fetchData and displays it on the screen for the user to practice typing. The function formats the paragraph into individual characters, wraps them in <span> elements, and adds the "active" class to the first character.
+*/
 export async function displayText() {
   try {
     let paragraphLength = 10;
@@ -51,7 +57,11 @@ export async function displayText() {
   }
 }
 
-// TYPING TEST
+/*
+  ----- TYPING TEST -----
+  Typing Test: The file exports the typingTest function, which handles the typing test as the user types. It compares the typed characters with the expected characters, adds classes ("correct" or "incorrect") to the characters based on user input, and moves the "active" class to the current character being typed.
+*/
+
 // keep track of the current index of the char being typed
 export let charIndex = 0;
 

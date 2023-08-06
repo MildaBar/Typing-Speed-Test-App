@@ -11,25 +11,29 @@ import { timer, timerInterval, resetTestTime } from "./metrics.js";
 let startBtn = document.getElementById("start-btn");
 let resetBtn = document.getElementById("reset-btn");
 
-// ----- START TEST -----
+/*
+  ----- START TEST -----
+  Start Test Function: The startTest function is called when the user clicks the start button or presses the Enter key. It displays text on the screen for the user to type and attaches an event listener to the input field to handle the typing test.
+*/
 startBtn.addEventListener("click", () => {
   startTest();
 });
 
-// start test function
 function startTest() {
   // display text on the screen and initialize typing test function
   displayText();
   inputField.addEventListener("input", typingTest);
 }
 
-// ----- RESET TEST -----
+/*
+  ----- RESET TEST -----
+  Reset Test Function: The resetTest function is called when the user clicks the reset button or presses the Escape key. It resets various elements and metrics related to the typing test, clears the test timer, and sets the text and input field to empty.
+*/
 resetBtn.addEventListener("click", () => {
   resetTest();
   startTest();
 });
 
-// reset test function
 function resetTest() {
   // change wpm and accuracy elements on the metrics section
   const wordAccuracyElement = document.querySelector(".accuracy");
@@ -63,10 +67,16 @@ function resetTest() {
   resetTestTime();
 }
 
-// ----- PROGRESS -----
+/*
+  ----- PROGRESS -----
+  Progress Display: The function showProgress() is called to display the progress of the typing test.
+*/
 showProgress();
 
-// ----- ENTER AND ESC KEYS -----
+/*
+  ----- ENTER AND ESC KEYS -----
+  Event Listeners: The code adds event listeners to the document for the Enter and Escape keys. Pressing Enter will start the typing test, and pressing Escape will reset the test and then start it again.
+  */
 document.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     startTest();
