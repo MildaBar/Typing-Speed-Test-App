@@ -89,10 +89,13 @@ function addNewResult(time, wpm, accuracy) {
   const progressTable = document.getElementById("progress-table");
 
   // create new row and cells
-  const newRow = document.createElement("tr");
+  //   const newRow = document.createElement("tr");
+
+  // insert new row at the top of the table
   const timeCell = document.createElement("td");
   const wpmCell = document.createElement("td");
   const accuracyCell = document.createElement("td");
+  const newRow = progressTable.insertRow(1);
 
   // set content of new cells
   timeCell.textContent = time;
@@ -103,8 +106,6 @@ function addNewResult(time, wpm, accuracy) {
   newRow.appendChild(timeCell);
   newRow.appendChild(wpmCell);
   newRow.appendChild(accuracyCell);
-
-  progressTable.appendChild(newRow);
 
   // retrieve previous results from localStorage
   const prevWpm = localStorage.getItem("wpm");
@@ -119,17 +120,19 @@ function addNewResult(time, wpm, accuracy) {
     let improvementMessage = "";
 
     if (wpmImproved && accuracyImproved) {
-      improvementMessage = "This is your best score! Good job, you improved!";
+      improvementMessage =
+        "You have improved in both WPM and WORD ACCURACY! Good job!";
     } else if (wpmImproved) {
       improvementMessage =
-        "Your WPM improved, although keep practising WORD ACCURACY";
+        "Your WPM improved, although keep practising on WORD ACCURACY";
     } else if (accuracyImproved) {
       improvementMessage =
-        "Your WORD ACCURACY improved, although keep practising WPM";
-    } else {
-      improvementMessage = "This is your worst score. Keep practising!";
+        "Your WORD ACCURACY improved, although keep practising on WPM";
     }
     improvementElement.textContent = improvementMessage;
+  } else if (!prevWpm && !prevAccuracy) {
+    improvementElement.textContent =
+      "This is your first test! Keep practising to check your improvements!";
   }
 
   localStorage.setItem("time", time);
@@ -151,3 +154,15 @@ function testDone() {
   // add a new row with new results
   addNewResult(timeResult, wpm, accuracy);
 }
+
+// ----- RUN THIS CODE WHEN THE PAGE LOADS
+document.addEventListener("DOMContentLoaded", () => {
+  const prevTime = localStorage.getItem("time");
+  const prevWpm = localStorage.getItem("wpm");
+  const prevAccuracy = localStorage.getItem("accuracy");
+
+  if (prevTime && prevWpm && prevAccuracy) {
+    // Display previous test results
+    addNewResult(prevTime, prevWpm, prevAccuracy);
+  }
+});
