@@ -1,6 +1,12 @@
-import { typingTest, inputField, displayText, typingText } from "./typing.js";
+import {
+  typingTest,
+  inputField,
+  displayText,
+  typingText,
+  resetCharIndex,
+} from "./typing.js";
 import { showProgress } from "./progress.js";
-import { startTimer, timer, timerInterval } from "./metrics.js";
+import { timer, timerInterval, resetTestTime } from "./metrics.js";
 
 let startBtn = document.getElementById("start-btn");
 let resetBtn = document.getElementById("reset-btn");
@@ -10,6 +16,7 @@ startBtn.addEventListener("click", () => {
   startTest();
 });
 
+// start test function
 function startTest() {
   // display text on the screen and initialize typing test function
   displayText();
@@ -19,18 +26,20 @@ function startTest() {
 // RESET TEST
 resetBtn.addEventListener("click", () => {
   resetTest();
+  startTest();
 });
 
+// reset test function
 function resetTest() {
   clearInterval(timerInterval);
 
-  let testTime = 60;
-  timer.textContent = testTime;
+  timer.textContent = 60;
 
   typingText.innerHTML = "";
   inputField.value = "";
 
-  inputField.removeEventListener("input", typingTest);
+  resetCharIndex(); // reset the charIndex to 0
+  resetTestTime(); // reset the testTime to 0
 }
 
 // PROGRESS

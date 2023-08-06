@@ -55,6 +55,11 @@ export async function displayText() {
 // keep track of the current index of the char being typed
 export let charIndex = 0;
 
+// export charIndex variable for reset btn
+export function resetCharIndex() {
+  charIndex = 0;
+}
+
 // this function is triggered whenever there is an input change in the input field
 export function typingTest() {
   if (charIndex === 0) {

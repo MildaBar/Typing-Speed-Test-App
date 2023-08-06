@@ -1,6 +1,12 @@
 import { charIndex, inputField, typingTest, typingText } from "./typing.js";
 
-export let testTime = 10;
+let testTime = 60;
+
+// export testTime variable for reset btn
+export function resetTestTime() {
+  testTime = 60;
+}
+
 export let timer = document.getElementById("timer");
 export let timerInterval;
 
@@ -42,7 +48,7 @@ function updateTime() {
   localStorage.setItem("dateResult", dateResult);
 }
 
-// ----- WPM AND WORD ACCURACY -----
+// ----- COUNT WPM AND WORD ACCURACY -----
 export function countAccuracyAndWPM() {
   const characters = typingText.querySelectorAll("span");
   const wordAccuracyElement = document.querySelectorAll(".accuracy");
@@ -88,7 +94,7 @@ export function countAccuracyAndWPM() {
 // (Number of characters typed / 5) / Time taken (in minutes)
 // Word Accuracy (%) = (Number of Correct Words / Total Number of Words) * 100
 
-// ----- CHANGE COLORS -----
+// ----- CHANGE COLORS OF METRICS WHEN TEST IS OVER -----
 function testDone() {
   let metricsBorders = document.querySelectorAll(".metrics");
   metricsBorders.forEach((border) => {
