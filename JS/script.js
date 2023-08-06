@@ -65,3 +65,13 @@ function resetTest() {
 
 // ----- PROGRESS -----
 showProgress();
+
+// ----- ENTER AND ESC KEYS -----
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    startTest();
+  } else if (event.key === "Escape") {
+    resetTest();
+    startTest();
+  }
+});
