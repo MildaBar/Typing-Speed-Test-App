@@ -54,6 +54,10 @@ function resetTest() {
   typingText.innerHTML = "";
   inputField.value = "";
 
+  // clear improvement message to empty
+  let improvementElement = document.getElementById("improvement-results");
+  improvementElement = "";
+
   // reset charIndex and testTime to 0
   resetCharIndex();
   resetTestTime();

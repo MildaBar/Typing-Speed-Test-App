@@ -1,16 +1,16 @@
 import { charIndex, inputField, typingTest, typingText } from "./typing.js";
 
+// ----- TIMER -----
 let testTime = 10;
+export let timer = document.getElementById("timer");
+export let timerInterval;
 
 // export testTime variable for reset btn
 export function resetTestTime() {
   testTime = 10;
 }
 
-export let timer = document.getElementById("timer");
-export let timerInterval;
-
-// ----- TIMER -----
+// start timer function
 export function startTimer() {
   timerInterval = setInterval(() => {
     testTime--;
@@ -84,7 +84,7 @@ export function countAccuracyAndWPM() {
   };
 }
 
-// ----- ADD NEW RESULTS ------
+// ----- ADD NEW RESULTS AND DISPLAY IMPROVEMENT------
 function addNewResult(time, wpm, accuracy) {
   const progressTable = document.getElementById("progress-table");
 
@@ -105,6 +105,32 @@ function addNewResult(time, wpm, accuracy) {
   newRow.appendChild(accuracyCell);
 
   progressTable.appendChild(newRow);
+
+  // retrieve previous results from localStorage
+  const prevWpm = localStorage.getItem("wpm");
+  const prevAccuracy = localStorage.getItem("accuracy");
+  let improvementElement = document.getElementById("improvement-results");
+
+  // compare with previous results and display improvement message
+  if (prevWpm && prevAccuracy) {
+    const wpmImproved = wpm > prevWpm;
+    const accuracyImproved = accuracy > prevAccuracy;
+
+    let improvementMessage = "";
+
+    if (wpmImproved && accuracyImproved) {
+      improvementMessage = "This is your best score! Good job, you improved!";
+    } else if (wpmImproved) {
+      improvementMessage =
+        "Your WPM improved, although keep practising WORD ACCURACY";
+    } else if (accuracyImproved) {
+      improvementMessage =
+        "Your WORD ACCURACY improved, although keep practising WPM";
+    } else {
+      improvementMessage = "This is your worst score. Keep practising!";
+    }
+    improvementElement.textContent = improvementMessage;
+  }
 
   localStorage.setItem("time", time);
   localStorage.setItem("wpm", wpm);
