@@ -1,10 +1,10 @@
 import { charIndex, inputField, typingTest, typingText } from "./typing.js";
 
-let testTime = 60;
+let testTime = 10;
 
 // export testTime variable for reset btn
 export function resetTestTime() {
-  testTime = 60;
+  testTime = 10;
 }
 
 export let timer = document.getElementById("timer");
@@ -34,25 +34,19 @@ export function startTimer() {
 
 // ----- DATE AND TIME -----
 function updateTime() {
-  // progress table
-  const timeCell = document.getElementById("time-result");
-
   // current date and time
   const now = new Date();
   const date = now.toLocaleDateString();
   const time = now.toLocaleTimeString();
   const dateResult = `${date} \n ${time} \n`;
-
-  timeCell.textContent = dateResult;
-
-  localStorage.setItem("dateResult", dateResult);
+  return dateResult;
 }
 
 // ----- COUNT WPM AND WORD ACCURACY -----
 export function countAccuracyAndWPM() {
   const characters = typingText.querySelectorAll("span");
-  const wordAccuracyElement = document.querySelectorAll(".accuracy");
-  const results = document.querySelectorAll(".wpm");
+  const wordAccuracyElement = document.querySelector(".accuracy");
+  const wpmElement = document.querySelector(".wpm");
 
   let correctChars = 0;
   let correctWords = 0;
@@ -73,31 +67,61 @@ export function countAccuracyAndWPM() {
     }
   });
 
+  // count wpm and accuracy
   const wordAccuracy = totalWords > 0 ? (correctWords / totalWords) * 100 : 0;
   let wpm = charIndex / 5;
 
   const accuracyResult = wordAccuracy.toFixed(0);
   const wpmResult = wpm.toFixed(0);
 
-  // loop through each element with the "wpm" class and set its content
-  results.forEach((result) => {
-    result.innerText = wpmResult;
-  });
+  // display wpm and accuracy in the metrics section
+  wpmElement.textContent = wpmResult;
+  wordAccuracyElement.textContent = accuracyResult;
 
-  // loop through each element with the "accuracy" class and set its content
-  wordAccuracyElement.forEach((element) => {
-    element.textContent = accuracyResult;
-  });
-  localStorage.setItem("wpmResult", wpmResult);
-  localStorage.setItem("accuracyResult", accuracyResult);
+  return {
+    accuracy: accuracyResult,
+    wpm: wpmResult,
+  };
 }
-// (Number of characters typed / 5) / Time taken (in minutes)
-// Word Accuracy (%) = (Number of Correct Words / Total Number of Words) * 100
 
-// ----- CHANGE COLORS OF METRICS WHEN TEST IS OVER -----
+// ----- ADD NEW RESULTS ------
+function addNewResult(time, wpm, accuracy) {
+  const progressTable = document.getElementById("progress-table");
+
+  // create new row and cells
+  const newRow = document.createElement("tr");
+  const timeCell = document.createElement("td");
+  const wpmCell = document.createElement("td");
+  const accuracyCell = document.createElement("td");
+
+  // set content of new cells
+  timeCell.textContent = time;
+  wpmCell.textContent = wpm;
+  accuracyCell.textContent = accuracy;
+
+  // append cells to the new row
+  newRow.appendChild(timeCell);
+  newRow.appendChild(wpmCell);
+  newRow.appendChild(accuracyCell);
+
+  progressTable.appendChild(newRow);
+
+  localStorage.setItem("time", time);
+  localStorage.setItem("wpm", wpm);
+  localStorage.setItem("accuracy", accuracy);
+}
+
+// ----- DISPLAY RESULTS WHEN TEST IS DONE -----
 function testDone() {
   let metricsBorders = document.querySelectorAll(".metrics");
   metricsBorders.forEach((border) => {
     border.classList.add("done");
   });
+
+  // call functions to get date/time, WPM, accuracy
+  const timeResult = updateTime();
+  const { accuracy, wpm } = countAccuracyAndWPM();
+
+  // add a new row with new results
+  addNewResult(timeResult, wpm, accuracy);
 }

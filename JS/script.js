@@ -11,7 +11,7 @@ import { timer, timerInterval, resetTestTime } from "./metrics.js";
 let startBtn = document.getElementById("start-btn");
 let resetBtn = document.getElementById("reset-btn");
 
-// START TEST
+// ----- START TEST -----
 startBtn.addEventListener("click", () => {
   startTest();
 });
@@ -23,7 +23,7 @@ function startTest() {
   inputField.addEventListener("input", typingTest);
 }
 
-// RESET TEST
+// ----- RESET TEST -----
 resetBtn.addEventListener("click", () => {
   resetTest();
   startTest();
@@ -31,16 +31,33 @@ resetBtn.addEventListener("click", () => {
 
 // reset test function
 function resetTest() {
+  // change wpm and accuracy elements on the metrics section
+  const wordAccuracyElement = document.querySelector(".accuracy");
+  const wpmElement = document.querySelector(".wpm");
+
+  wordAccuracyElement.textContent = 0;
+  wpmElement.textContent = 0;
+
+  // change border color of metrics section
+  let metricsBorders = document.querySelectorAll(".metrics");
+  metricsBorders.forEach((border) => {
+    border.classList.remove("done");
+  });
+
+  // clear interval - the timer stops counting once the test is reset
   clearInterval(timerInterval);
 
-  timer.textContent = 60;
+  // change timer value to 60 s
+  timer.textContent = 10;
 
+  // set text and input field to empty
   typingText.innerHTML = "";
   inputField.value = "";
 
-  resetCharIndex(); // reset the charIndex to 0
-  resetTestTime(); // reset the testTime to 0
+  // reset charIndex and testTime to 0
+  resetCharIndex();
+  resetTestTime();
 }
 
-// PROGRESS
+// ----- PROGRESS -----
 showProgress();
