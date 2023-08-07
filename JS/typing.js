@@ -58,11 +58,11 @@ export async function fetchData(paragraphLength) {
 export async function displayText() {
   try {
     let paragraphLength = 10;
+    typingText.innerHTML = "Loading poem...";
     let text = await fetchData(paragraphLength);
     typingText.innerHTML = "";
-    typingText.style.whiteSpace = "";
 
-    // use forEach to iterate over each character in the text array
+    // iterate over each character in the text array
     text.split("").forEach((char) => {
       let span = `<span>${char}</span>`;
       typingText.innerHTML += span;
