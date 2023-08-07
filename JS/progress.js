@@ -74,7 +74,7 @@ function addNewResult(time, wpm, accuracy) {
     improvementElement.innerHTML = improvementMessage;
   } else if (!prevWpm && !prevAccuracy) {
     improvementElement.textContent =
-      "This is your first test! Keep practising to check your improvements!";
+      "This is your first test! Start practising to check your improvements!";
   }
 
   localStorage.setItem("time", time);
