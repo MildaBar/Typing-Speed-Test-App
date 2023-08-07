@@ -9,9 +9,11 @@
   align-items: center;
   font-size: 30px;
   border-radius: 20px;
-  background-color: #007bff72;
+  background-color: #93b3d672;
   padding: 20px 40px;
 }
+
+/* #007bff72 */
 
 #show-more-icon {
   cursor: pointer;
