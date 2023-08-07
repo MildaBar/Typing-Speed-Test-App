@@ -1,3 +1,4 @@
+/* METRICS SECTION */
 #metrics-container {
   font-family: monospace;
   display: flex;
@@ -23,7 +24,7 @@
   font-size: 20px;
 }
 
-/* IMPROVEMENT SECTION */
+/* IMPROVEMENT */
 #improvement-results {
   border-radius: 20px;
   border: 5px solid #007bff;
