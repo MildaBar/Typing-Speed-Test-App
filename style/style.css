@@ -9,15 +9,14 @@
 
 /* PAGE BREAK */
 #breaker-1 {
-  height: 2px;
   background: linear-gradient(to right, rgb(51, 114, 153), #fff);
-  padding: 1px;
-  margin: 10px;
+  height: 2px;
+  width: 100%;
 }
 
 #breaker-2 {
-  height: 2px;
   background: linear-gradient(to left, rgb(51, 114, 153), #fff);
-  padding: 1px;
-  margin: 10px;
+  height: 2px;
+  width: 100%;
+  margin-top: 10px;
 }

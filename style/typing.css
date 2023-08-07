@@ -4,6 +4,7 @@
   margin: 20px;
   border-radius: 20px;
   font-family: monospace;
+  max-height: 500px;
 }
 
 /* TYPED TEXT */
@@ -14,10 +15,6 @@
   border: 5px solid #007bff;
   padding: 20px 40px;
   overflow: hidden;
-}
-
-#typing-space .typing-text {
-  max-height: 330px;
 }
 
 .typing-text p {

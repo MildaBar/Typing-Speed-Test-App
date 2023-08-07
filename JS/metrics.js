@@ -6,13 +6,13 @@ import { testDone } from "./progress.js";
   Timer Functions: The file exports two functions, startTimer and resetTestTime. The startTimer function sets up an interval to update the timer every second, while the resetTestTime function resets the testTime variable to 50 seconds for test restart.
 */
 
-let testTime = 15;
+let testTime = 60;
 export let timer = document.getElementById("timer");
 export let timerInterval;
 
 // export testTime variable for reset btn
 export function resetTestTime() {
-  testTime = 15;
+  testTime = 60;
 }
 
 // start timer function

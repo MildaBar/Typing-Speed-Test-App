@@ -9,11 +9,9 @@
   align-items: center;
   font-size: 30px;
   border-radius: 20px;
-  background-color: #93b3d672;
+  background-color: #007bff72;
   padding: 20px 40px;
 }
-
-/* #007bff72 */
 
 #show-more-icon {
   cursor: pointer;
@@ -21,10 +19,10 @@
 
 /* PROGRESS TABLE */
 #progress-table-container {
-  display: none; /* Hide the table by default */
+  display: none; /* hide the table by default */
   padding: 20px;
   margin: 10px;
-  background-image: url("./images/background-photo/letters.jpg");
+  background-image: url("/images/background-photo/letters.jpg");
   background-position: center;
   background-size: cover;
 }

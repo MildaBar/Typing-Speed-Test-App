@@ -52,7 +52,7 @@ function resetTest() {
   clearInterval(timerInterval);
 
   // change timer value to 60 s
-  timer.textContent = 15;
+  timer.textContent = 60;
 
   // set text and input field to empty
   typingText.innerHTML = "";
