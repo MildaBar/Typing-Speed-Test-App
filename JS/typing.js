@@ -12,8 +12,29 @@ export async function fetchData(paragraphLength) {
     const response = await fetch(
       "https://poetrydb.org/title/Alastor: Or, the Spirit of Solitude/lines.json"
     );
+
+    /*
+      Description: condition checks the 'ok' property of the response object
+
+      Explanation: 'ok' property indicates whether the API request was successful or not.
+
+      If the API request returns a non-successful status code (HTTP status code (200)), it means the request failed, and the code throws an error with a message including the specific status code received from the API response
+    */
+    if (!response.ok) {
+      throw new Error("API request failed. Status: " + response.status);
+    }
+
     const data = await response.json();
     const lines = data[0].lines;
+
+    /*
+      Description: check the variable lines, which contains an array of poetry lines retrieved from the API
+
+      Explanation: if any of these three conditions are true, it means that the lines variable either does not exist, is not an array or is an empty array, indicating that there was an issue with the data received from the API
+    */
+    if (!lines || !Array.isArray(lines) || lines.length === 0) {
+      throw new Error("Invalid or empty data received from the API.");
+    }
 
     // get random start index
     const startIndex = Math.floor(
