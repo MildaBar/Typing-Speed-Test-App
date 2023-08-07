@@ -26,9 +26,6 @@ export function showProgress() {
 function addNewResult(time, wpm, accuracy) {
   const progressTable = document.getElementById("progress-table");
 
-  // create new row and cells
-  //   const newRow = document.createElement("tr");
-
   // insert new row at the top of the table
   const timeCell = document.createElement("td");
   const wpmCell = document.createElement("td");
@@ -111,4 +108,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Display previous test results
     addNewResult(prevTime, prevWpm, prevAccuracy);
   }
+
+  // reset improvement section message
+  let improvementElement = document.getElementById("improvement-results");
+  const defaultImprovementMessage =
+    "Keep practising to check your improvements!";
+  improvementElement.textContent = defaultImprovementMessage;
 });

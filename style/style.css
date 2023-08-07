@@ -1,0 +1,23 @@
+/* FOOTER */
+#footer {
+  font-family: monospace;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(51, 114, 153));
+}
+
+/* PAGE BREAK */
+#breaker-1 {
+  height: 2px;
+  background: linear-gradient(to right, rgb(51, 114, 153), #fff);
+  padding: 1px;
+  margin: 10px;
+}
+
+#breaker-2 {
+  height: 2px;
+  background: linear-gradient(to left, rgb(51, 114, 153), #fff);
+  padding: 1px;
+  margin: 10px;
+}

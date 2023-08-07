@@ -15,6 +15,8 @@
   font-size: 40px;
   background-color: white;
   text-align: center;
+  display: grid;
+  align-content: center;
 }
 
 .metrics-title {
@@ -35,6 +37,7 @@
 }
 
 #improvement {
+  width: 70vh;
   text-align: center;
 }
 
