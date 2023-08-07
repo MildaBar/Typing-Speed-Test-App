@@ -13,7 +13,7 @@ let resetBtn = document.getElementById("reset-btn");
 
 /*
   ----- START TEST -----
-  Start Test Function: The startTest function is called when the user clicks the start button or presses the Enter key. It displays text on the screen for the user to type and attaches an event listener to the input field to handle the typing test.
+  Start Test Function: The startTest function displays text on the screen for the user to type and attaches an event listener to the input field to handle the typing test.
 */
 startBtn.addEventListener("click", () => {
   startTest();
@@ -27,7 +27,7 @@ function startTest() {
 
 /*
   ----- RESET TEST -----
-  Reset Test Function: The resetTest function is called when the user clicks the reset button or presses the Escape key. It resets various elements and metrics related to the typing test, clears the test timer, and sets the text and input field to empty.
+  Reset Test Function: The resetTest function resets various elements and metrics related to the typing test, clears the test timer, and sets the text and input field to empty.
 */
 resetBtn.addEventListener("click", () => {
   resetTest();
@@ -52,7 +52,7 @@ function resetTest() {
   clearInterval(timerInterval);
 
   // change timer value to 60 s
-  timer.textContent = 15;
+  timer.textContent = 60;
 
   // set text and input field to empty
   typingText.innerHTML = "";

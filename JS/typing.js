@@ -5,7 +5,7 @@ export const inputField = document.getElementById("input-field");
 
 /*
   ----- FETCH DATA -----
-  fetchData: The file exports the fetchData function, which fetches a poem's lines from a public API and returns a random paragraph of a specified length for the typing test.
+  fetchData: fetch a poem's lines from a public API and return a random paragraph of a specified length for the typing test.
 */
 export async function fetchData(paragraphLength) {
   try {
@@ -53,7 +53,7 @@ export async function fetchData(paragraphLength) {
 
 /*
   ----- DISPLAY TEXT ON THE SCREEN -----
-  Display Text on the Screen: The file exports the displayText function, which fetches a paragraph of text using fetchData and displays it on the screen for the user to practice typing. The function formats the paragraph into individual characters, wraps them in <span> elements, and adds the "active" class to the first character.
+  Display Text on the Screen: the displayText function fetches a paragraph of text using fetchData and displays it on the screen for the user to practice typing. The function formats the paragraph into individual characters, wraps them in <span> elements, and adds the "active" class to the first character.
 */
 export async function displayText() {
   try {
@@ -73,14 +73,13 @@ export async function displayText() {
     document.addEventListener("keydown", () => inputField.focus());
     document.addEventListener("click", () => inputField.focus());
   } catch (error) {
-    // handle the error here if needed
     console.log("Error displaying text:", error);
   }
 }
 
 /*
   ----- TYPING TEST -----
-  Typing Test: The file exports the typingTest function, which handles the typing test as the user types. It compares the typed characters with the expected characters, adds classes ("correct" or "incorrect") to the characters based on user input, and moves the "active" class to the current character being typed.
+  Typing Test: typingTest function handles the typing test as the user types. It compares the typed characters with the expected characters, adds classes ("correct" or "incorrect") to the characters based on user input, and moves the "active" class to the current character being typed.
 */
 
 // keep track of the current index of the char being typed
@@ -91,7 +90,7 @@ export function resetCharIndex() {
   charIndex = 0;
 }
 
-// this function is triggered whenever there is an input change in the input field
+// function is triggered whenever there is an input change in the input field
 export function typingTest() {
   if (charIndex === 0) {
     startTimer();
@@ -99,7 +98,7 @@ export function typingTest() {
 
   let characters = typingText.querySelectorAll("span");
   let currentWord = "";
-  let inWord = false; // flag to track if currently typing a word
+  let inWord = false;
 
   // get the current text typed in the input field
   let typedText = inputField.value;
@@ -113,17 +112,14 @@ export function typingTest() {
     if (typedChar == "") {
       // if the charIndex is greater than 0, the user is backspacing
       if (charIndex > 0) {
-        // decrement the character index and remove correct and incorrect classes
         charIndex--;
         characters[charIndex].classList.remove("correct", "incorrect");
       }
     } else {
       // if the charIndex is valid, check if the typed char matches the expected char
       if (characters[charIndex].innerText == typedChar) {
-        // if it matches, add the correct class to the char
         characters[charIndex].classList.add("correct");
       } else {
-        // if it doesn't match, add the incorrect class to the char
         characters[charIndex].classList.add("incorrect");
       }
       // move to the next charIndex
@@ -133,7 +129,6 @@ export function typingTest() {
     // HIGLIGHT THE CURRENT WORD
     // check if the typed char is a space (end of a word)
     if (typedChar === " ") {
-      // if currently typing a word (inWord is true)
       if (inWord) {
         // loop through chars of the current word and add the underline class
         for (let i = charIndex - currentWord.length - 1; i < charIndex; i++) {
@@ -146,7 +141,6 @@ export function typingTest() {
     } else {
       // append the typed char to the currentWord
       currentWord += typedChar;
-      // set inWord to true
       inWord = true;
       // loop through chars of the current word and add the underline class
       for (let i = charIndex - currentWord.length; i < charIndex; i++) {

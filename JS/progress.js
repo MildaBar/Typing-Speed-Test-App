@@ -2,7 +2,7 @@ import { updateTime, countAccuracyAndWPM } from "./metrics.js";
 
 /*
   ----- SHOW PROGRESS RESULTS -----
-  Show Progress: The file exports the showProgress function, which adds an event listener to the "show more" icon. When clicked, the function toggles the display of the progress table.
+  Show Progress: the showProgress function adds an event listener to the "show more" icon. When clicked, the function toggles the display of the progress table.
 */
 export function showProgress() {
   document.addEventListener("DOMContentLoaded", () => {
@@ -21,7 +21,7 @@ export function showProgress() {
 
 /*
   ----- ADD NEW RESULTS AND DISPLAY IMPROVEMENT------
-  Add New Results and Display Improvement: The file exports the addNewResult function, which adds a new row to the progress table with test results (time, WPM, and accuracy) and displays an improvement message based on the user's performance compared to previous results stored in the localStorage.
+  Add New Results and Display Improvement: the addNewResult function adds a new row to the progress table with test results (time, WPM, and accuracy) and displays an improvement message based on the user's performance compared to previous results stored in the localStorage.
 */
 function addNewResult(time, wpm, accuracy) {
   const progressTable = document.getElementById("progress-table");
@@ -84,7 +84,7 @@ function addNewResult(time, wpm, accuracy) {
 
 /*
   ----- DISPLAY RESULTS WHEN TEST IS DONE -----
-  Test Done: The file exports the testDone function, which is called when the typing test is done. It updates the metrics section with test results, adds the new results to the progress table, and displays an improvement message based on the user's performance.
+  Test Done: the testDone function is called when the typing test is done. It updates the metrics section with test results, adds the new results to the progress table, and displays an improvement message based on the user's performance.
 */
 export function testDone() {
   let metricsBorders = document.querySelectorAll(".metrics");
@@ -96,6 +96,7 @@ export function testDone() {
   const timeResult = updateTime();
   const { accuracy, wpm } = countAccuracyAndWPM();
 
+  // change improvement message
   let improvementElement = document.getElementById("improvement-results");
   improvementElement.style.color = "green";
   improvementElement.style.fontWeight = "bold";
@@ -114,7 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevAccuracy = localStorage.getItem("accuracy");
 
   if (prevTime && prevWpm && prevAccuracy) {
-    // Display previous test results
     addNewResult(prevTime, prevWpm, prevAccuracy);
   }
 

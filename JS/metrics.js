@@ -3,16 +3,16 @@ import { testDone } from "./progress.js";
 
 /*
   ----- TIMER -----
-  Timer Functions: The file exports two functions, startTimer and resetTestTime. The startTimer function sets up an interval to update the timer every second, while the resetTestTime function resets the testTime variable to 50 seconds for test restart.
+  Timer Functions: The startTimer function sets up an interval to update the timer every second, while the resetTestTime function resets the testTime variable to 60 seconds for test reset btn.
 */
 
-let testTime = 15;
+let testTime = 60;
 export let timer = document.getElementById("timer");
 export let timerInterval;
 
 // export testTime variable for reset btn
 export function resetTestTime() {
-  testTime = 15;
+  testTime = 60;
 }
 
 // start timer function
@@ -38,7 +38,7 @@ export function startTimer() {
 
 /*
   ----- DATE AND TIME -----
-  Date and Time: The file exports the updateTime function, which retrieves the current date and time and returns a formatted string representation.
+  Date and Time: the updateTime function retrieves the current date and time and returns a string.
 */
 export function updateTime() {
   // current date and time
@@ -51,7 +51,7 @@ export function updateTime() {
 
 /*
   ----- COUNT WPM AND WORD ACCURACY -----
-  Count WPM and Word Accuracy: The file exports the countAccuracyAndWPM function, which calculates the word accuracy and WPM based on the user's typing performance. It counts correct characters and correct words, then calculates and updates the metrics section with the accuracy and WPM values.
+  Count WPM and Word Accuracy: the countAccuracyAndWPM function calculates the word accuracy and WPM based on the user's typing performance. It counts correct characters and correct words, then calculates and updates the metrics section with the accuracy and WPM values.
 */
 export function countAccuracyAndWPM() {
   const characters = typingText.querySelectorAll("span");
@@ -62,7 +62,7 @@ export function countAccuracyAndWPM() {
   let correctWords = 0;
   let totalWords = 0;
 
-  // loop through each char and chech if it has correct class
+  // loop through each char and check if it has correct class
   characters.forEach((char) => {
     if (char.classList.contains("correct")) {
       correctChars++;
