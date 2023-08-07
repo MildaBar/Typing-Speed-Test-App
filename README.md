@@ -2,23 +2,24 @@
 
 ## Table of Content:
 
+- [Demo Link](#linl)
 - [Project Description](#description)
-- [Features](#features)
-- [Code](#code)
+- [Usage Instructions](#instructions)
+- [Code Features](#code)
+
+## Demo Link
+
+https://mildabar.github.io/Typing-Speed-Test-App/
 
 ## Description
 
 The Typing Speed Test App is a JavaScript application that allows users to test their typing speed and accuracy.
 
-## Features
+## Usage Instructions
 
-- **API Integration**: The code includes API fetching to provide poetry text for the typing test.
+Users can assess their typing speed and accuracy within a 60-second timeframe. The test results are presented both visually on the screen and stored in a tabular format. As the test concludes, a designated metric section will turn green, indicating completion. At this point, users can review their performance results and improvement.
 
-- **Interactive Elements**: Interactive features such as hover effects improve user engagement.
-
-- **Error Handling**: The app incorporates error handling for API fetch requests to ensure smooth operation even in case of errors.
-
-## Code
+## Code Features
 
 The codebase comprises the following components:
 

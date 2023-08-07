@@ -107,9 +107,9 @@ export function testDone() {
 
 /*
   ----- RETRIEVE PREVIOUS TEST RESULTS WHEN THE PAGE LOADS -----
-  Page Load: The code adds an event listener to the document for the "DOMContentLoaded" event. When the page loads, it retrieves previous test results from localStorage and displays them if available.
+  Page Load: execute the code block after the entire webpage has finished loading. The code retrieves the stored test results from local storage, displays them if available, and resets the improvement message accordingly
 */
-document.addEventListener("DOMContentLoaded", () => {
+window.onload = function () {
   const prevTime = localStorage.getItem("time");
   const prevWpm = localStorage.getItem("wpm");
   const prevAccuracy = localStorage.getItem("accuracy");
@@ -120,9 +120,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // reset improvement section message
   let improvementElement = document.getElementById("improvement-results");
-  const defaultImprovementMessage =
-    "Keep practising to check your improvements!";
+  const defaultImprovementMessage = "Start the test to check your improvements";
   improvementElement.textContent = defaultImprovementMessage;
   improvementElement.style.color = "";
   improvementElement.style.fontWeight = "";
-});
+};
