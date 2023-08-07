@@ -48,3 +48,9 @@
   background: #ffc0cb;
   border-radius: 4px;
 }
+
+/* underline word */
+.typing-text p span.underline {
+  text-decoration: underline;
+  text-decoration-color: black;
+}

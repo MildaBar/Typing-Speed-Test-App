@@ -6,13 +6,13 @@ import { testDone } from "./progress.js";
   Timer Functions: The file exports two functions, startTimer and resetTestTime. The startTimer function sets up an interval to update the timer every second, while the resetTestTime function resets the testTime variable to 50 seconds for test restart.
 */
 
-let testTime = 60;
+let testTime = 15;
 export let timer = document.getElementById("timer");
 export let timerInterval;
 
 // export testTime variable for reset btn
 export function resetTestTime() {
-  testTime = 60;
+  testTime = 15;
 }
 
 // start timer function
@@ -70,8 +70,6 @@ export function countAccuracyAndWPM() {
         correctWords++;
       }
     }
-
-    // count the total number of words
     if (char.innerText === " ") {
       totalWords++;
     }
@@ -79,7 +77,7 @@ export function countAccuracyAndWPM() {
 
   // count wpm and accuracy
   const wordAccuracy = totalWords > 0 ? (correctWords / totalWords) * 100 : 0;
-  let wpm = charIndex / 5;
+  let wpm = correctChars / 5;
 
   const accuracyResult = wordAccuracy.toFixed(0);
   const wpmResult = wpm.toFixed(0);

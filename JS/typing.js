@@ -98,6 +98,8 @@ export function typingTest() {
   }
 
   let characters = typingText.querySelectorAll("span");
+  let currentWord = "";
+  let inWord = false; // flag to track if currently typing a word
 
   // get the current text typed in the input field
   let typedText = inputField.value;
@@ -126,6 +128,30 @@ export function typingTest() {
       }
       // move to the next charIndex
       charIndex++;
+    }
+
+    // HIGLIGHT THE CURRENT WORD
+    // check if the typed char is a space (end of a word)
+    if (typedChar === " ") {
+      // if currently typing a word (inWord is true)
+      if (inWord) {
+        // loop through chars of the current word and add the underline class
+        for (let i = charIndex - currentWord.length - 1; i < charIndex; i++) {
+          characters[i].classList.add("underline");
+        }
+      }
+      // reset the variables
+      currentWord = "";
+      inWord = false;
+    } else {
+      // append the typed char to the currentWord
+      currentWord += typedChar;
+      // set inWord to true
+      inWord = true;
+      // loop through chars of the current word and add the underline class
+      for (let i = charIndex - currentWord.length; i < charIndex; i++) {
+        characters[i].classList.add("underline");
+      }
     }
 
     // remove the "active" class from all chars
