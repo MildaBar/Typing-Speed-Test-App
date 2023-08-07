@@ -52,7 +52,7 @@ function resetTest() {
   clearInterval(timerInterval);
 
   // change timer value to 60 s
-  timer.textContent = 60;
+  timer.textContent = 15;
 
   // set text and input field to empty
   typingText.innerHTML = "";
@@ -61,6 +61,8 @@ function resetTest() {
   // clear improvement message to empty
   let improvementElement = document.getElementById("improvement-results");
   improvementElement.textContent = "Start test to check your improvements";
+  improvementElement.style.color = "";
+  improvementElement.style.fontWeight = "";
 
   // reset charIndex and testTime to 0
   resetCharIndex();

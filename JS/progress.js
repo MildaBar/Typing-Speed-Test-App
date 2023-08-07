@@ -42,6 +42,11 @@ function addNewResult(time, wpm, accuracy) {
   newRow.appendChild(wpmCell);
   newRow.appendChild(accuracyCell);
 
+  // center alignment to table cells
+  timeCell.style.textAlign = "center";
+  wpmCell.style.textAlign = "center";
+  accuracyCell.style.textAlign = "center";
+
   // retrieve previous results from localStorage
   const prevWpm = localStorage.getItem("wpm");
   const prevAccuracy = localStorage.getItem("accuracy");
@@ -56,17 +61,17 @@ function addNewResult(time, wpm, accuracy) {
 
     if (wpmImproved && accuracyImproved) {
       improvementMessage =
-        "You have improved in both WPM and WORD ACCURACY! Good job!";
+        "TEST IS OVER <br> You have improved in both WPM and WORD ACCURACY! Good job!";
     } else if (wpmImproved) {
       improvementMessage =
-        "Your WPM improved, although keep practising on WORD ACCURACY";
+        "TEST IS OVER <br> Your WPM improved, although keep practising on WORD ACCURACY";
     } else if (accuracyImproved) {
       improvementMessage =
-        "Your WORD ACCURACY improved, although keep practising on WPM";
+        "TEST IS OVER <br> Your WORD ACCURACY improved, although keep practising on WPM";
     } else {
-      improvementMessage = `This time you didn't improved in both WPM and WORD ACCURACY. Keep practising!`;
+      improvementMessage = `TEST IS OVER <br> This time you didn't improved in both WPM and WORD ACCURACY. Keep practising!`;
     }
-    improvementElement.textContent = improvementMessage;
+    improvementElement.innerHTML = improvementMessage;
   } else if (!prevWpm && !prevAccuracy) {
     improvementElement.textContent =
       "This is your first test! Keep practising to check your improvements!";
@@ -91,6 +96,10 @@ export function testDone() {
   const timeResult = updateTime();
   const { accuracy, wpm } = countAccuracyAndWPM();
 
+  let improvementElement = document.getElementById("improvement-results");
+  improvementElement.style.color = "green";
+  improvementElement.style.fontWeight = "bold";
+
   // add a new row with new results
   addNewResult(timeResult, wpm, accuracy);
 }
@@ -114,4 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const defaultImprovementMessage =
     "Keep practising to check your improvements!";
   improvementElement.textContent = defaultImprovementMessage;
+  improvementElement.style.color = "";
+  improvementElement.style.fontWeight = "";
 });
