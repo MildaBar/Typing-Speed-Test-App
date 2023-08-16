@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle, import/extensions
-import { inputField, typingTest, typingText } from "./typing.js"
+import { inputField, typingTest, typingText } from "../JS/typing.js"
 // eslint-disable-next-line import/no-cycle, import/extensions
-import { testDone } from "./progress.js";
+import { testDone } from "../JS/progress.js";
 
 /*
   ----- DATE AND TIME -----

@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle, import/extensions
-import { startTimer } from "./metrics.js";
+import { startTimer } from "../metrics/metrics.js";
 
 export const typingText = document.querySelector(".typing-text p");
 export const inputField = document.getElementById("input-field");
