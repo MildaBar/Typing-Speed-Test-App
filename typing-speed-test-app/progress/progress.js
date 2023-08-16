@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle, import/extensions
-import { updateTime, countAccuracyAndWPM } from "./metrics.js";
+import { updateTime, countAccuracyAndWPM } from "../metrics/metrics.js";
 
 /*
   ----- SHOW PROGRESS RESULTS -----
