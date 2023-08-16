@@ -1,8 +1,8 @@
+// eslint-disable-next-line import/no-cycle, import/extensions
 import { updateTime, countAccuracyAndWPM } from "./metrics.js";
 
 /*
   ----- SHOW PROGRESS RESULTS -----
-  Show Progress: the showProgress function adds an event listener to the "show more" icon. When clicked, the function toggles the display of the progress table.
 */
 export function showProgress() {
   document.addEventListener("DOMContentLoaded", () => {
@@ -21,7 +21,6 @@ export function showProgress() {
 
 /*
   ----- ADD NEW RESULTS AND DISPLAY IMPROVEMENT------
-  Add New Results and Display Improvement: the addNewResult function adds a new row to the progress table with test results (time, WPM, and accuracy) and displays an improvement message based on the user's performance compared to previous results stored in the localStorage.
 */
 function addNewResult(time, wpm, accuracy) {
   const progressTable = document.getElementById("progress-table");
@@ -50,7 +49,7 @@ function addNewResult(time, wpm, accuracy) {
   // retrieve previous results from localStorage
   const prevWpm = localStorage.getItem("wpm");
   const prevAccuracy = localStorage.getItem("accuracy");
-  let improvementElement = document.getElementById("improvement-results");
+  const improvementElement = document.getElementById("improvement-results");
 
   // compare with previous results and display improvement message
   if (prevWpm && prevAccuracy) {
@@ -84,10 +83,9 @@ function addNewResult(time, wpm, accuracy) {
 
 /*
   ----- DISPLAY RESULTS WHEN TEST IS DONE -----
-  Test Done: the testDone function is called when the typing test is done. It updates the metrics section with test results, adds the new results to the progress table, and displays an improvement message based on the user's performance.
 */
 export function testDone() {
-  let metricsBorders = document.querySelectorAll(".metrics");
+  const metricsBorders = document.querySelectorAll(".metrics");
   metricsBorders.forEach((border) => {
     border.classList.add("done");
   });
@@ -97,7 +95,7 @@ export function testDone() {
   const { accuracy, wpm } = countAccuracyAndWPM();
 
   // change improvement message
-  let improvementElement = document.getElementById("improvement-results");
+  const improvementElement = document.getElementById("improvement-results");
   improvementElement.style.color = "green";
   improvementElement.style.fontWeight = "bold";
 
@@ -119,7 +117,7 @@ window.onload = function () {
   }
 
   // reset improvement section message
-  let improvementElement = document.getElementById("improvement-results");
+  const improvementElement = document.getElementById("improvement-results");
   const defaultImprovementMessage = "Start the test to check your improvements";
   improvementElement.textContent = defaultImprovementMessage;
   improvementElement.style.color = "";
