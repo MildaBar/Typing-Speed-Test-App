@@ -5,7 +5,7 @@ import {
   typingText,
   resetCharIndex,
 // eslint-disable-next-line import/extensions
-} from "./typing.js";
+} from "./typing/typing.js";
 // eslint-disable-next-line import/extensions
 import { showProgress } from "./progress.js";
 // eslint-disable-next-line import/extensions
