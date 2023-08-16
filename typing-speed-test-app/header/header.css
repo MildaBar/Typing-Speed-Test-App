@@ -4,7 +4,8 @@
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  background-image: linear-gradient(rgb(51, 114, 153), rgb(255, 255, 255));
+  background-image: linear-gradient(#337299, #FFF);
+
 }
 
 .navbar a {
