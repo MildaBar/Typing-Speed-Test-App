@@ -66,8 +66,13 @@ export async function displayText() {
 
 /*
   ----- TYPING TEST -----
-  Typing Test: typingTest function handles the typing test as the user types. It compares the typed characters with the expected characters, adds classes ("correct" or "incorrect") to the characters based on user input, and moves the "active" class to the current character being typed.
 */
+
+export let testIsGoing = false;
+
+export function setTestIsGoing() {
+  testIsGoing = false;
+}
 
 // keep track of the current index of the char being typed
 let charIndex = 0;
@@ -81,6 +86,7 @@ export function resetCharIndex() {
 export function typingTest() {
   if (charIndex === 0) {
     startTimer();
+    testIsGoing = true;
   }
 
   const characters = typingText.querySelectorAll("span");

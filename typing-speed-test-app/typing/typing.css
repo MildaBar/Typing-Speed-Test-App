@@ -1,4 +1,4 @@
-/* TYPING CONTAINER*/
+/* TYPING CONTAINER */
 #typing-container {
   padding: 30px;
   margin: 20px;
@@ -15,9 +15,6 @@
   border: 5px solid #007bff;
   padding: 20px 40px;
   overflow: hidden;
-}
-
-.typing-text p {
   font-size: 35px;
   color: grey;
 }

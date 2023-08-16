@@ -4,6 +4,8 @@ import {
   displayText,
   typingText,
   resetCharIndex,
+  setTestIsGoing,
+  testIsGoing
 // eslint-disable-next-line import/extensions
 } from "./typing/typing.js";
 // eslint-disable-next-line import/extensions
@@ -70,17 +72,41 @@ showProgress();
 
 
 /*
-  ----- ENTER AND ESC KEYS -----
+  ----- START AND RESET TEST WITH BUTTONS AND ENTER/ESC KEYS -----
   */
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    startTest();
-  } else if (event.key === "Escape") {
-    resetTest();
+
+// begin test when test is  not going
+function beginTest() {
+  if(!testIsGoing) {
+    setTestIsGoing(true)
     startTest();
   }
-});
+}
 
+// start test with ENTER key
+function startTestEnter() {
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      beginTest();
+    }
+  })
+};
+
+// reset test with ESC key
+function resetTestEsc() {
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      resetTest();
+      startTest();
+    }
+  })
+}
+
+startTestEnter()
+resetTestEsc()
+
+
+// START AND RESET BUTTONS
 startBtn.addEventListener("click", () => {
   startTest();
 });
