@@ -7,9 +7,9 @@ import {
 // eslint-disable-next-line import/extensions
 } from "./typing/typing.js";
 // eslint-disable-next-line import/extensions
-import { showProgress } from "./progress.js";
+import { showProgress } from "./progress/progress.js";
 // eslint-disable-next-line import/extensions
-import { timer, timerInterval, resetTestTime } from "./metrics.js";
+import { timer, timerInterval, resetTestTime } from "./metrics/metrics.js";
 
 const startBtn = document.getElementById("start-btn");
 const resetBtn = document.getElementById("reset-btn");
