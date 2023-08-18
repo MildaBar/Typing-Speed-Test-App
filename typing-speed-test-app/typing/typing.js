@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/no-cycle, import/extensions
 import { startTimer } from "../metrics/metrics.js";
+// eslint-disable-next-line import/extensions
+import { testDone } from "../progress/progress.js";
 
 export const typingText = document.querySelector(".typing-text p");
 export const inputField = document.getElementById("input-field");
@@ -148,5 +150,9 @@ export function typingTest() {
     if (charIndex >= 0 && charIndex < characters.length) {
       characters[charIndex].classList.add("active");
     }
+  } else if (charIndex === characters.length) {
+    testDone()
+    inputField.removeEventListener("input", typingTest);
+    console.log('typing');
   }
 }

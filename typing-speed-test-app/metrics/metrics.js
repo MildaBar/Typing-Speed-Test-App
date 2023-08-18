@@ -61,13 +61,13 @@ export function countAccuracyAndWPM() {
   ----- TIMER -----
 */
 
-let testTime = 10;
+let testTime = 20;
 export const timer = document.getElementById("timer");
 export let timerInterval;
 
 // export testTime variable for reset btn
 export function resetTestTime() {
-  testTime = 10;
+  testTime = 20;
 }
 
 // start timer function
@@ -84,6 +84,7 @@ export function startTimer() {
       updateTime();
       countAccuracyAndWPM();
       testDone();
+      console.log('startTimer function');
 
       // stop further typing
       inputField.removeEventListener("input", typingTest);

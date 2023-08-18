@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle, import/extensions
-import { updateTime, countAccuracyAndWPM } from "../metrics/metrics.js";
+import { updateTime, countAccuracyAndWPM, timerInterval } from "../metrics/metrics.js";
 
 /*
   ----- SHOW PROGRESS RESULTS -----
@@ -97,6 +97,7 @@ function addNewResult(time, wpm, accuracy) {
   ----- DISPLAY RESULTS WHEN TEST IS DONE -----
 */
 export function testDone() {
+  clearInterval(timerInterval);
   const metricsBorders = document.querySelectorAll(".metrics");
   metricsBorders.forEach((border) => {
     border.classList.add("done");
@@ -113,6 +114,7 @@ export function testDone() {
 
   // add a new row with new results
   addNewResult(timeResult, wpm, accuracy);
+  console.log('test done');
 }
 
 /*
@@ -123,6 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     results.forEach((result) => {
       displayNewResult(result.time, result.wpm, result.accuracy);
+      console.log('again');
   })
 
   const improvementElement = document.getElementById("improvement-results");
