@@ -85,7 +85,7 @@ function beginTest() {
 
 // start test with ENTER key
 function startTestEnter() {
-  document.addEventListener("keydown", (event) => {
+  document.addEventListener("keyup", (event) => {
     if (event.key === "Enter") {
       beginTest();
     }
@@ -94,7 +94,7 @@ function startTestEnter() {
 
 // reset test with ESC key
 function resetTestEsc() {
-  document.addEventListener("keydown", (event) => {
+  document.addEventListener("keyup", (event) => {
     if (event.key === "Escape") {
       resetTest();
       startTest();
