@@ -6,10 +6,10 @@ import { updateTime, countAccuracyAndWPM } from "../metrics/metrics.js";
 */
 export function showProgress() {
   document.addEventListener("DOMContentLoaded", () => {
-    const showMoreIcon = document.getElementById("show-more-icon");
+    const showMore = document.getElementById("progress-title");
     const progressTable = document.getElementById("progress-table-container");
 
-    showMoreIcon.addEventListener("click", () => {
+    showMore.addEventListener("click", () => {
       if (progressTable.style.display === "none") {
         progressTable.style.display = "block";
       } else {
@@ -20,12 +20,10 @@ export function showProgress() {
 }
 
 /*
-  ----- ADD NEW RESULTS AND DISPLAY IMPROVEMENT------
+  ----- DISPLAY RESULTS -----
 */
-function addNewResult(time, wpm, accuracy) {
+function displayNewResult(time, wpm, accuracy) {
   const progressTable = document.getElementById("progress-table");
-
-  // insert new row at the top of the table
   const timeCell = document.createElement("td");
   const wpmCell = document.createElement("td");
   const accuracyCell = document.createElement("td");
@@ -45,40 +43,54 @@ function addNewResult(time, wpm, accuracy) {
   timeCell.style.textAlign = "center";
   wpmCell.style.textAlign = "center";
   accuracyCell.style.textAlign = "center";
+}
 
-  // retrieve previous results from localStorage
-  const prevWpm = localStorage.getItem("wpm");
-  const prevAccuracy = localStorage.getItem("accuracy");
-  const improvementElement = document.getElementById("improvement-results");
+/*
+  ----- ADD NEW RESULTS AND DISPLAY IMPROVEMENT------
+*/
 
-  // compare with previous results and display improvement message
-  if (prevWpm && prevAccuracy) {
-    const wpmImproved = wpm > prevWpm;
-    const accuracyImproved = accuracy > prevAccuracy;
+function addNewResult(time, wpm, accuracy) {
+  const results = JSON.parse(localStorage.getItem("results")) || [];
 
-    let improvementMessage = "";
+  // Create a new result object
+  const newResult = { time, wpm, accuracy };
+  results.push(newResult);
 
-    if (wpmImproved && accuracyImproved) {
-      improvementMessage =
-        "TEST IS OVER <br> You have improved in both WPM and WORD ACCURACY! Good job!";
-    } else if (wpmImproved) {
-      improvementMessage =
-        "TEST IS OVER <br> Your WPM improved, although keep practising on WORD ACCURACY";
-    } else if (accuracyImproved) {
-      improvementMessage =
-        "TEST IS OVER <br> Your WORD ACCURACY improved, although keep practising on WPM";
-    } else {
-      improvementMessage = `TEST IS OVER <br> This time you didn't improved in both WPM and WORD ACCURACY. Keep practising!`;
+  // Store updated results in localStorage
+  localStorage.setItem("results", JSON.stringify(results));
+
+  // Call the function to display the new result
+  displayNewResult(time, wpm, accuracy);
+
+    // retrieve previous results from localStorage
+    const prevWpm = localStorage.getItem("wpm");
+    const prevAccuracy = localStorage.getItem("accuracy");
+    const improvementElement = document.getElementById("improvement-results");
+
+    // compare with previous results and display improvement message
+    if (prevWpm && prevAccuracy) {
+      const wpmImproved = wpm > prevWpm;
+      const accuracyImproved = accuracy > prevAccuracy;
+
+      let improvementMessage = "";
+
+      if (wpmImproved && accuracyImproved) {
+        improvementMessage =
+          "TEST IS OVER <br> You have improved in both WPM and WORD ACCURACY! Good job!";
+      } else if (wpmImproved) {
+        improvementMessage =
+          "TEST IS OVER <br> Your WPM improved, although keep practising on WORD ACCURACY";
+      } else if (accuracyImproved) {
+        improvementMessage =
+          "TEST IS OVER <br> Your WORD ACCURACY improved, although keep practising on WPM";
+      } else {
+        improvementMessage = `TEST IS OVER <br> This time you didn't improved in both WPM and WORD ACCURACY. Keep practising!`;
+      }
+      improvementElement.innerHTML = improvementMessage;
+    } else if (!prevWpm && !prevAccuracy) {
+      improvementElement.textContent =
+        "This is your first test! Start practising to check your improvements!";
     }
-    improvementElement.innerHTML = improvementMessage;
-  } else if (!prevWpm && !prevAccuracy) {
-    improvementElement.textContent =
-      "This is your first test! Start practising to check your improvements!";
-  }
-
-  localStorage.setItem("time", time);
-  localStorage.setItem("wpm", wpm);
-  localStorage.setItem("accuracy", accuracy);
 }
 
 /*
@@ -105,21 +117,18 @@ export function testDone() {
 
 /*
   ----- RETRIEVE PREVIOUS TEST RESULTS WHEN THE PAGE LOADS -----
-  Page Load: execute the code block after the entire webpage has finished loading. The code retrieves the stored test results from local storage, displays them if available, and resets the improvement message accordingly
 */
-window.onload = function () {
-  const prevTime = localStorage.getItem("time");
-  const prevWpm = localStorage.getItem("wpm");
-  const prevAccuracy = localStorage.getItem("accuracy");
+document.addEventListener("DOMContentLoaded", () => {
+  const results = JSON.parse(localStorage.getItem("results")) || [];
 
-  if (prevTime && prevWpm && prevAccuracy) {
-    addNewResult(prevTime, prevWpm, prevAccuracy);
-  }
+    results.forEach((result) => {
+      displayNewResult(result.time, result.wpm, result.accuracy);
+  })
 
-  // reset improvement section message
   const improvementElement = document.getElementById("improvement-results");
   const defaultImprovementMessage = "Start the test to check your improvements";
   improvementElement.textContent = defaultImprovementMessage;
   improvementElement.style.color = "";
   improvementElement.style.fontWeight = "";
-};
+});
+

@@ -12,9 +12,6 @@
   border-radius: 20px;
   background-color: #007bff72;
   padding: 20px 40px;
-}
-
-#show-more-icon {
   cursor: pointer;
 }
 
@@ -23,7 +20,7 @@
   display: none; /* hide the table by default */
   padding: 20px;
   margin: 10px;
-  background-image: url("/images/background-photo/letters.jpg");
+  background-image: url("../utilities/letters.jpg");
   background-position: center;
   background-size: cover;
 }

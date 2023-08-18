@@ -29,7 +29,7 @@ export function countAccuracyAndWPM() {
 
   // loop through each char and check if it has correct class
   characters.forEach((char) => {
-    if (char.classList.contains("correct")) {
+    if (char.classList.contains("correct") && char.innerText !== ' ') {
       correctChars += 1;
       if (char.innerText === " ") {
         correctWords += 1;
@@ -61,13 +61,13 @@ export function countAccuracyAndWPM() {
   ----- TIMER -----
 */
 
-let testTime = 60;
+let testTime = 10;
 export const timer = document.getElementById("timer");
 export let timerInterval;
 
 // export testTime variable for reset btn
 export function resetTestTime() {
-  testTime = 60;
+  testTime = 10;
 }
 
 // start timer function

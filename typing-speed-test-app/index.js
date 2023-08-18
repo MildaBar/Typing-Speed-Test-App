@@ -48,7 +48,7 @@ const metricsBorders = document.querySelectorAll(".metrics");
   clearInterval(timerInterval);
 
   // change timer value to 60 s
-  timer.textContent = 60;
+  timer.textContent = 10;
 
   // set text and input field to empty
   typingText.innerHTML = "";
