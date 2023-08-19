@@ -1,11 +1,14 @@
 /* HEADER */
+body {
+  margin: 0;
+}
+
 .navbar {
   font-family: monospace;
   display: flex;
   justify-content: space-between;
   padding: 20px;
   background-image: linear-gradient(#337299, #FFF);
-
 }
 
 .navbar a {
